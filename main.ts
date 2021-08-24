@@ -6,6 +6,10 @@ input.onSound(DetectedSound.Loud, function () {
 })
 function openLid () {
     rekabit.setServoPosition(ServoChannel.S1, 90)
+    basic.pause(5000)
+    music.startMelody(music.builtInMelody(Melodies.Punchline), MelodyOptions.Once)
+    basic.pause(100)
+    rekabit.setServoPosition(ServoChannel.S1, 0)
 }
 function calculateDistance () {
     pins.digitalWritePin(DigitalPin.P0, 0)
@@ -27,10 +31,8 @@ rekabit.setServoPosition(ServoChannel.S1, 0)
 basic.forever(function () {
     d = calculateDistance()
     if (d < 30) {
-        soundExpression.giggle.playUntilDone()
         openLid()
+        soundExpression.giggle.playUntilDone()
     }
     basic.pause(100)
-    basic.pause(10000)
-    rekabit.setServoPosition(ServoChannel.S1, 0)
 })
