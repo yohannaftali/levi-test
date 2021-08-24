@@ -1,15 +1,15 @@
 input.onButtonPressed(Button.A, function () {
-    rekabit.setServoPosition(ServoChannel.S1, 90)
+    rekabit.setServoPosition(ServoChannel.All, 90)
 })
 input.onSound(DetectedSound.Loud, function () {
     basic.showIcon(IconNames.Heart)
 })
 function openLid () {
-    rekabit.setServoPosition(ServoChannel.S1, 90)
+    rekabit.setServoPosition(ServoChannel.All, 90)
     basic.pause(5000)
     music.startMelody(music.builtInMelody(Melodies.Punchline), MelodyOptions.Once)
     basic.pause(100)
-    rekabit.setServoPosition(ServoChannel.S1, 0)
+    rekabit.setServoPosition(ServoChannel.All, 0)
 }
 function calculateDistance () {
     pins.digitalWritePin(DigitalPin.P0, 0)
@@ -21,7 +21,13 @@ function calculateDistance () {
     return distance
 }
 input.onButtonPressed(Button.B, function () {
-    rekabit.setServoPosition(ServoChannel.S1, 0)
+    rekabit.setServoPosition(ServoChannel.All, 0)
+})
+input.onLogoEvent(TouchButtonEvent.Touched, function () {
+    rekabit.setServoPosition(ServoChannel.All, 0)
+})
+input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+    rekabit.setServoPosition(ServoChannel.All, 90)
 })
 let d = 0
 let distance = 0
