@@ -6,7 +6,8 @@
         "radio": "*",
         "microphone": "*",
         "pxt-rekabit": "github:cytrontechnologies/pxt-rekabit#v1.2.2",
-        "github": "github:yohannaftali/github_microbit#master"
+        "github": "github:yohannaftali/github_microbit#master",
+        "pxt-sonar": "github:Microsoft/pxt-sonar#v0.0.5"
     },
     "files": [
         "main.blocks",
