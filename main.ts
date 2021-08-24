@@ -4,6 +4,9 @@ input.onButtonPressed(Button.A, function () {
 input.onSound(DetectedSound.Loud, function () {
     basic.showIcon(IconNames.Heart)
 })
+function openLid () {
+    rekabit.setServoPosition(ServoChannel.S1, 90)
+}
 function calculateDistance () {
     pins.digitalWritePin(DigitalPin.P0, 0)
     control.waitMicros(2)
@@ -25,6 +28,9 @@ basic.forever(function () {
     d = calculateDistance()
     if (d < 30) {
         soundExpression.giggle.playUntilDone()
+        openLid()
     }
     basic.pause(100)
+    basic.pause(10000)
+    rekabit.setServoPosition(ServoChannel.S1, 0)
 })
